@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        outline: none;
+        box-sizing: border-box;
+        font-family: "Montserrat", sans-serif;
+        transition: 0.5s all;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background-color: black;
+      }
+
+      @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,400&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        font-size: 62.5%;
+        font-family: "Roboto", sans-serif;
+      }
+
+      li {
+        list-style: none;
+      }
+
+      a {
+        text-decoration: none;
+      }
+      .header {
+        border-bottom: 1px solid #e2e8f0;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 1.7rem;
+      }
+
+      .hamburger {
+        display: none;
+      }
+
+      .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        background-color: #101010;
+      }
+      .nav-menu {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 999;
+      }
+
+      .nav-item {
+        margin-left: 5rem;
+      }
+
+      .nav-link {
+        font-size: 2.7rem;
+        font-weight: 400;
+        color: #475569;
+      }
+
+      .nav-link:hover {
+        color: #482ff7;
+      }
+
+      .nav-logo {
+        font-size: 3.3rem;
+        font-weight: 500;
+        color: #482ff7;
+      }
+      @media only screen and (max-width: 768px) {
+        .nav-menu {
+          position: fixed;
+          left: -100%;
+          top: 7rem;
+          flex-direction: column;
+          background-color: #fff;
+          width: 100%;
+          border-radius: 10px;
+          text-align: center;
+          transition: 0.3s;
+          box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-menu.active {
+          left: 0;
+        }
+
+        .nav-item {
+          margin: 2.5rem 0;
+        }
+
+        .hamburger {
+          display: block;
+          cursor: pointer;
+        }
+        .hamburger.active .bar:nth-child(2) {
+          opacity: 0;
+        }
+
+        .hamburger.active .bar:nth-child(1) {
+          transform: translateY(8px) rotate(45deg);
+        }
+
+        .hamburger.active .bar:nth-child(3) {
+          transform: translateY(-8px) rotate(-45deg);
+        }
+      }
+      .dropdown {
+        float: left;
+        overflow: hidden;
+      }
+
+      /* Dropdown button */
+      .dropdown .dropbtn {
+        font-size: 2.3rem;
+        border: none;
+        outline: none;
+        color: white;
+        padding: 14px 16px;
+        background-color: inherit;
+        cursor: pointer;
+
+        /* Important for vertical align on mobile phones */
+        margin: 0;
+        /* Important for vertical align on mobile phones */
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 999;
+      }
+
+      /* Links inside the dropdown */
+      .dropdown-content a {
+        float: none;
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+        font-size: 20px;
+      }
+
+      /* Add a grey background color to dropdown links on hover */
+      .dropdown-content a:hover {
+        background-color: #ddd;
+      }
+
+      /* Show the dropdown menu on hover */
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+      .dropbtn img {
+        border-radius: 50%;
+        border: 2px solid #555;
+      }
+
+      .fa-caret-down {
+        color: black;
+      }
+
+      .background img {
+        height: 700px;
+        width: 100%;
+      }
+
+      .main-posters {
+        display: flex;
+        justify-content: space-evenly;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+
+      .main-posters img {
+        width: 530px;
+        height: 600px;
+      }
+
+      .radeon img {
+        height: 500px;
+        width: 100%;
+      }
+
+      .motherboard img {
+        height: 500px;
+        width: 100%;
+      }
+
+      .motherboards {
+        display: flex;
+        padding: 20px;
+        justify-content: center;
+      }
+
+      .motherboards img {
+        width: 720px;
+        padding: 10px;
+      }
+
+      .credit-card img {
+        width: 100%;
+      }
+
+      .parts {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+      }
+
+      .parts img {
+        width: 350px;
+      }
+
+      .prebuilt img {
+        width: 100%;
+      }
+
+      .prebuilt-components {
+        display: flex;
+
+        justify-content: space-between;
+        padding: 20px;
+      }
+
+      .freeshipping img {
+        width: 100%;
+      }
+
+      .keyboards {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+      }
+
+      .keyboards img {
+        height: 350px;
+      }
+
+      .container {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 60em;
+        *zoom: 1;
+        color: white;
+      }
+
+      .grid-testimonials {
+        overflow: hidden;
+        padding-top: 3.125em;
+      }
+
+      .grid-testimonials li {
+        float: left;
+        list-style-type: none;
+        padding-bottom: 3.125em;
+      }
+
+      .grid-testimonials p {
+        line-height: 1.5em;
+        margin: 0;
+      }
+
+      .grid-testimonials-citation {
+        color: #656262;
+        display: block;
+        font-size: 1.125em;
+        font-weight: 700;
+        margin-top: 2em;
+        text-transform: uppercase;
+        text-align: center;
+      }
+
+      .grid-testimonials li div {
+        border: 10px solid #ebebeb;
+        padding: 2.125em 7.638888888888889%;
+        position: relative;
+      }
+
+      .grid-testimonials .quote-arrow {
+        background: #fff;
+        border-right: 10px solid #ebebeb;
+        border-bottom: 10px solid #ebebeb;
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: -32px;
+        left: 50%;
+        margin-left: -25px;
+        width: 40px;
+        height: 40px;
+        -moz-transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+      }
+
+      @media screen and (min-width: 50em) {
+        .grid-testimonials li {
+          margin-right: 5%;
+          width: 30%;
+        }
+
+        .grid-testimonials li:nth-child(3n) {
+          margin-right: 0;
+        }
+      }
+
+      .tesimonials-heading {
+        color: white;
+        text-align: center;
+        margin-top: 10px;
+        margin-top: 40px;
+      }
+      .omeside {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
+      /* FOOTER */
+      .footer {
+        width: 100%;
+        background: #00121b;
+        display: block;
+      }
+
+      .inner-footer {
+        width: 95%;
+        margin: auto;
+        padding: 30px 10px;
+        display: flex;
+        flex-wrap: wrap;
+        box-sizing: border-box;
+        justify-content: center;
+      }
+
+      .footer-items {
+        width: 25%;
+        padding: 10px 20px;
+        box-sizing: border-box;
+        color: #fff;
+      }
+
+      .footer-items p {
+        font-size: 16px;
+        text-align: justify;
+        line-height: 25px;
+        color: #fff;
+      }
+
+      .footer-items h1 {
+        color: #fff;
+      }
+
+      .border1 {
+        height: 3px;
+        width: 40px;
+        background: #ff9800;
+        color: #ff9800;
+        background-color: #ff9800;
+        border: 0px;
+      }
+
+      .footer ul {
+        list-style: none;
+        color: #fff;
+        font-size: 15px;
+        letter-spacing: 0.5px;
+      }
+
+      .footer ul a {
+        text-decoration: none;
+        outline: none;
+        color: #fff;
+        transition: 0.3s;
+      }
+
+      .footer ul a:hover {
+        color: #ff9800;
+      }
+
+      .footer ul li {
+        margin: 10px 0;
+        height: 25px;
+      }
+
+      .footer li i {
+        margin-right: 20px;
+      }
+
+      .social-media {
+        width: 100%;
+        color: #fff;
+        text-align: center;
+        font-size: 20px;
+      }
+
+      .social-media a {
+        text-decoration: none;
+      }
+
+      .social-media i {
+        height: 25px;
+        width: 25px;
+        margin: 20px 10px;
+        padding: 4px;
+        color: #fff;
+        transition: 0.5s;
+      }
+
+      .social-media i:hover {
+        transform: scale(1.5);
+      }
+
+      .footer-bottom {
+        padding: 10px;
+        background: #00121b;
+        color: #fff;
+        font-size: 12px;
+        text-align: center;
+      }
+
+      /* for tablet mode view */
+
+      @media screen and (max-width: 1275px) {
+        .footer-items {
+          width: 50%;
+        }
+      }
+
+      /* for mobile screen view */
+
+      @media screen and (max-width: 660px) {
+        .footer-items {
+          width: 100%;
+        }
+      }
+
+      /* you can toggle the media screen view accordingly by changing the (max-width: px) to your convenience */
+
+      /* Thanks to Computer Conversations */
+      @media (max-width: 1400px) {
+        .motherboards {
+          display: flex;
+          flex-direction: column;
+        }
+        .motherboard-one {
+          display: flex;
+          flex-direction: column;
+        }
+        .motherboard-one img {
+          width: 100%;
+          padding: 0;
+          margin: 0;
+        }
+        .parts {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+        }
+        .parts a {
+          margin-bottom: 20px;
+        }
+        .prebuilt-components {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+        }
+        .prebuilt-components a {
+          margin-bottom: 20px;
+        }
+        .keyboards {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+        }
+        .keyboards a {
+          margin-top: 20px;
+        }
+      }
+      @media (max-width: 1100px) {
+        .main-posters {
+          display: flex;
+
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+      @media (max-width: 750px) {
+        .parts {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .parts img {
+          height: 400px;
+          width: 300px;
+          align-items: center;
+        }
+        .prebuilt-components {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .prebuilt-components img {
+          height: 400px;
+          width: 300px;
+          align-items: center;
+        }
+        .keyboards {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .keyboards img {
+          height: 400px;
+
+          align-items: center;
+        }
+      }
+      @media (max-width: 700px) {
+        .background img {
+          height: 400px;
+        }
+        .main-posters img {
+          height: 400px;
+          width: 100%;
+          margin-bottom: 20px;
+          padding: 10px;
+        }
+      }
+      @media (max-width: 680px) {
+        .parts {
+          display: flex;
+
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+        .prebuilt-components {
+          display: flex;
+
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+        .keyboards {
+          display: flex;
+
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+      @media (max-width: 550px) {
+        .motherboard img {
+          height: 400px;
+          width: 400px;
+          padding: 30px;
+        }
+        .parts img {
+          width: 300px;
+        }
+        .keyboards img {
+          width: 300px;
+        }
+      }
+      .navbar img {
+        height: 80px;
+      }
+      .processor-img img{
+        height: 300px;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="page">
+      <header class="header">
+        <nav class="navbar">
+          <a href="index.html" class="nav-logo"><img src="new.png"></a>
+          <ul class="nav-menu">
+            <li class="nav-item">
+              <a href="index.html" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+              <div class="dropdown">
+                <button class="dropbtn" style="color: #475569">
+                  Shop By Category ⬇️
+                  <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                  <a href="processor.html">Processor</a>
+                  <a href="motherboard.html">Motherboard</a>
+                  <a href="keyboard.html">Keyboard</a>
+                  <a href="mouse.html">Mouse</a>
+                  <a href="cabinet.html">PC Cabinete</a>
+                  <a href="headphones.html">Headphones</a>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a href="#footer" class="nav-link">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a href="#feedback" class="nav-link">Feedback</a>
+            </li>
+          </ul>
+          <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+        </nav>
+      </header>
+      <script>
+        const hamburger = document.querySelector(".hamburger");
+        const navMenu = document.querySelector(".nav-menu");
+
+        hamburger.addEventListener("click", mobileMenu);
+
+        function mobileMenu() {
+          hamburger.classList.toggle("active");
+          navMenu.classList.toggle("active");
+        }
+        const navLink = document.querySelectorAll(".nav-link");
+
+        navLink.forEach((n) => n.addEventListener("click", closeMenu));
+
+        function closeMenu() {
+          hamburger.classList.remove("active");
+          navMenu.classList.remove("active");
+        }
+      </script>
+      <div class="background">
+        <img src="backgroundimg.webp" />
+      </div>
+      <div class="main-posters">
+        <div>
+          <a href="#"><img src="main-poster-1.webp" /></a>
+        </div>
+        <div>
+          <a href="#"><img src="main-poster-2.webp" /></a>
+        </div>
+      </div>
+      <!--
+        <div class="radeon">
+            <a href="#"><img src="radeon.webp"></a>
+        </div>
+    -->
+      <div class="motherboard">
+        <a href="motherboard.html"><img src="motherboard.jpg" /></a>
+      </div>
+
+      <div class="motherboards">
+        <div class="motherboard-one">
+          <a href="motherboard.html"><img src="asus-motherboard.webp" /></a>
+          <a href="motherboard.html"><img src="asrock-motherboard.webp" /></a>
+        </div>
+        <div class="motherboard-one">
+          <a href="motherboard.html"><img src="gigabyte-motherboard.webp" /></a>
+          <a href="motherboard.html"><img src="msi-motherboard.webp" /></a>
+        </div>
+      </div>
+      <div class="credit-card">
+        <img src="credit-card.webp" />
+      </div>
+      <div class="parts">
+        <a href="mouse.html"><img src="logitechmouse.png" /></a>
+        <a href="keyboard.html"><img src="logitechkeyboard.png" /></a>
+        <a href="headphones.html"><img src="logitexhheadphone.png" /></a>
+        <a href="#"><img src="logitechposter.png" /></a>
+      </div>
+      <div class="parts">
+        <a href="mouse.html"><img src="razermouse.jpeg" /></a>
+        <a href="headphones.html"><img src="razerheadset.webp" /></a>
+        <a href="keyboard.html"><img src="razerkeyboard.jpeg" /></a>
+        <a href="#"><img src="razermousepad.jpeg" /></a>
+      </div>
+      <div class="prebuilt">
+        <a href="cabinet.html"><img src="prebuilt.webp" /></a>
+      </div>
+      <div class="prebuilt-components">
+        <a href="cabinet.html"><img src="prebuilt-img-1.webp" /></a>
+        <a href="cabinet.html"><img src="prebuilt-img-2.webp" /></a>
+        <a href="cabinet.html"><img src="prebuilt-img-3.webp" /></a>
+        <a href="cabinet.html"><img src="prebuilt-img-4.webp" /></a>
+        <a href="cabinet.html"><img src="prebuilt-img-5.webp" /></a>
+        <a href="cabinet.htmlsssss"><img src="prebuilt-img-6.webp" /></a>
+      </div>
+      <div class="processor-img">
+        <a href="processor.html"><img src="https://img.freepik.com/premium-vector/cpu-microprocessor-background_127544-1451.jpg?w=2000" /></a>
+      </div>
+      <!--<div class="prebuilt-components">
+        <a href=""><img src="prebuilt-img-7.webp" /></a>
+        <a href=""><img src="prebuilt-img-8.webp" /></a>
+        <a href=""><img src="prebuilt-img-9.webp" /></a>
+        <a href=""><img src="prebuilt-img-10.webp" /></a>
+        <a href=""><img src="prebuilt-img-11.webp" /></a>
+        <a href=""><img src="prebuilt-img-12.webp" /></a>
+      </div>
+    -->
+      <div class="freeshipping">
+        <img src="freeshipping.webp" />
+      </div>
+      <div class="keyboards">
+        <a href="keyboard.html"><img src="antkeyboard.webp" /></a>
+        <a href="keyboard.html"><img src="logitechGkeyboard.webp" /></a>
+        <a href="keyboard.html"><img src="razerpinkkeyboard.webp" /></a>
+        <a href="keyboard.html"><img src="coolermasterkeyboard.webp" /></a>
+        <a href="keyboard.html"><img src="redragonkeyboard.webp" /></a>
+        <a href="keyboard.html"><img src="gamdiaskeyboard.webp" /></a>
+      </div>
+      <div class="tesimonials-heading" id="feedback">
+        <h1>Testimonials</h1>
+      </div>
+      <div class="container">
+        <ul class="grid-testimonials">
+          <li>
+            <div>
+              <p>
+                &ldquo;Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Suspendisse aliquet mattis interd. Phasellus volutpat
+                pellentesque dui, sit amet commodo risus faucibus sit
+                amet.&rdquo;
+              </p>
+              <span class="quote-arrow"></span>
+            </div>
+            <span class="grid-testimonials-citation">Michael Fox</span>
+          </li>
+          <li>
+            <div>
+              <p>
+                &ldquo;Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Suspendisse aliquet mattis interd. Phasellus volutpat
+                pellentesque dui, sit amet commodo risus faucibus sit
+                amet.&rdquo;
+              </p>
+              <span class="quote-arrow"></span>
+            </div>
+            <span class="grid-testimonials-citation">Riley Jackson</span>
+          </li>
+          <li>
+            <div>
+              <p>
+                &ldquo;Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Suspendisse aliquet mattis interd. Phasellus volutpat
+                pellentesque dui, sit amet commodo risus faucibus sit
+                amet.&rdquo;
+              </p>
+              <span class="quote-arrow"></span>
+            </div>
+            <span class="grid-testimonials-citation">Eleanor Gundry</span>
+          </li>
+          <li>
+            <div>
+              <p>
+                &ldquo;Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Suspendisse aliquet mattis interd. Phasellus volutpat
+                pellentesque dui, sit amet commodo risus faucibus sit
+                amet.&rdquo;
+              </p>
+              <span class="quote-arrow"></span>
+            </div>
+            <span class="grid-testimonials-citation">Jorge Castillo</span>
+          </li>
+          <li>
+            <div>
+              <p>
+                &ldquo;Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Suspendisse aliquet mattis interd. Phasellus volutpat
+                pellentesque dui, sit amet commodo risus faucibus sit
+                amet.&rdquo;
+              </p>
+              <span class="quote-arrow"></span>
+            </div>
+            <span class="grid-testimonials-citation">Anson Mount</span>
+          </li>
+          <li>
+            <div>
+              <p>
+                &ldquo;Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Suspendisse aliquet mattis interd. Phasellus volutpat
+                pellentesque dui, sit amet commodo risus faucibus sit
+                amet.&rdquo;
+              </p>
+              <span class="quote-arrow"></span>
+            </div>
+            <span class="grid-testimonials-citation">Crystal Anderson</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer" id="footer">
+      <div class="inner-footer">
+        <!--  for company name and description -->
+        <div class="footer-items">
+          <h1>Game Changer</h1>
+          <p>One stop for all your pc accessories</p>
+        </div>
+
+        <!--  for quick links  -->
+        <div class="footer-items">
+          <h3>Quick Links</h3>
+          <div class="border1"></div>
+          <!--for the underline -->
+          <ul>
+            <a href="#"><li>Home</li></a>
+            <a href="#"><li>Shop By Category</li></a>
+            <a href="#"><li>Contact</li></a>
+            <a href="#"><li>Feedback</li></a>
+          </ul>
+        </div>
+
+        <!--  for some other links -->
+        <div class="footer-items">
+          <h3>Products</h3>
+          <div class="border1"></div>
+          <!--for the underline -->
+          <ul>
+            <a href="processor.html"><li>Processor</li></a>
+            <a href="motherboard.html"><li>Motherboard</li></a>
+            <a href="mouse.html"><li>Mouse</li></a>
+            <a href="keyboard.html"><li>Keyboard</li></a>
+            <a href="cabinet.html"><li>Cabinetes</li></a>
+            <a href="headphones.html"><li>Headphones</li></a>
+          </ul>
+        </div>
+
+        <!--  for contact us info -->
+        <div class="footer-items">
+          <h3>Contact us</h3>
+          <div class="border1"></div>
+          <ul>
+            <li><i class="fa fa-map-marker" aria-hidden="true"></i>XYZ, abc</li>
+            <li><i class="fa fa-phone" aria-hidden="true"></i>123456789</li>
+            <li>
+              <i class="fa fa-envelope" aria-hidden="true"></i>xyz@gmail.com
+            </li>
+          </ul>
+
+          <!--   for social links -->
+          <div class="social-media">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-google-plus-square"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!--   Footer Bottom start  -->
+      <div class="footer-bottom">Copyright &copy; Game Changer 2022.</div>
+    </div>
+  </body>
+  <script>
+    const menuBtn = document.querySelector(".menu-icon span");
+    const searchBtn = document.querySelector(".search-icon");
+    const cancelBtn = document.querySelector(".cancel-icon");
+    const items = document.querySelector(".nav-items");
+    const form = document.querySelector("form");
+    menuBtn.onclick = () => {
+      items.classList.add("active");
+      menuBtn.classList.add("hide");
+      searchBtn.classList.add("hide");
+      cancelBtn.classList.add("show");
+    };
+    cancelBtn.onclick = () => {
+      items.classList.remove("active");
+      menuBtn.classList.remove("hide");
+      searchBtn.classList.remove("hide");
+      cancelBtn.classList.remove("show");
+      form.classList.remove("active");
+      cancelBtn.style.color = "#ff3d00";
+    };
+    searchBtn.onclick = () => {
+      form.classList.add("active");
+      searchBtn.classList.add("hide");
+      cancelBtn.classList.add("show");
+    };
+  </script>
+</html>
